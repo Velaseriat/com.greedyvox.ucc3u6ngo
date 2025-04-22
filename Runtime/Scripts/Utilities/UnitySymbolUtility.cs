@@ -1,5 +1,7 @@
 using UnityEditor;
+#if UNITY_EDITOR
 using UnityEditor.Build;
+#endif
 
 namespace GreedyVox.NetCode.Utilities
 {

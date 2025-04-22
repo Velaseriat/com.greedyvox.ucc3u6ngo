@@ -2,7 +2,6 @@
     "name": "com.greedyvox.ucc3u6ngo.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:0acc523941302664db1f4e527237feb3",
         "GUID:1491147abca9d7d4bb7105af628b223e",
         "GUID:bbb15c76beca87041af309d0035105a2",
         "GUID:d8e89a79cd8df884b8d5b3356783eb74",
