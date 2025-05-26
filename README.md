@@ -1,8 +1,11 @@
 # UCC3U6NGO
+
 Unity 6 Netcode For GameObjects using The Ultimate Character Controller 3
 
 # Netcode for GameObjects
+
 WIP for Opsive Character Controller networked using the Unity Netcode for GameObjects using UCC3 and Unity6 and above.
+
 <h3>Project Setup</h3><img src='https://github.com/GreedyVox/MLAPI/blob/5a53149b8b04b88f6997879ab6985c32b0df06e1/Assets/Screenshot%20from%202025-03-25%2008-32-47.png' alt="project"></img>
 Basic networked setup for networking, if using BD for Ai, make sure BD is installed before checking this option.
 
@@ -13,4 +16,10 @@ Setting up the player UCC prefab, use the tool menu to open up the dialog box, d
 
 Add package with Github URL
 https://github.com/GreedyVox/com.greedyvox.ucc3u6ngo.git
+
+
+
+<p align="center"><kbd><a href="https://www.youtube.com/embed/UxfR8P-cGWs" target="_blank"><img src="https://user-images.githubusercontent.com/69744813/146674735-87a86fa0-ef98-453b-be55-3de15e8decda.png" alt="UCC3NGO" width="240" height="180" border="10"/></a></kbd></p>
+<p align="center"><kbd><a href="https://www.youtube.com/embed/z4xLAKEFc1Q" target="_blank"><img src="https://user-images.githubusercontent.com/69744813/146674735-87a86fa0-ef98-453b-be55-3de15e8decda.png" alt="UCC3NGO" width="240" height="180" border="10"/></a></kbd></p>
+
 
