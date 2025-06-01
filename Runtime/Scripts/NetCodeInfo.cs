@@ -40,7 +40,7 @@ namespace GreedyVox.NetCode
         /// Does the network instance have authority?
         /// </summary>
         /// <returns>True if the instance has authority.</returns>
-        public bool HasAuthority() => IsOwner;
+        public new bool HasAuthority() => base.HasAuthority;
         /// <summary>
         /// Is the player a spectator?
         /// </summary>
