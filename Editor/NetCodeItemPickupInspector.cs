@@ -4,6 +4,7 @@ using GreedyVox.NetCode.Utilities;
 using Opsive.UltimateCharacterController.Objects.CharacterAssist;
 using Opsive.UltimateCharacterController.Traits;
 using Unity.Netcode;
+using Unity.Netcode.Components;
 using UnityEditor;
 using UnityEngine;
 
@@ -124,6 +125,8 @@ namespace GreedyVox.NetCode.Editors
             // Add custom NetCode components
             ComponentUtility.TryAddComponent<NetCodeInfo>(go);
             ComponentUtility.TryAddComponent<NetCodeEvent>(go);
+            ComponentUtility.TryAddComponent<NetworkRigidbody>(go);
+            ComponentUtility.TryAddComponent<NetworkTransform>(go);
             // Add network monitors if AttributeManager or Health components are present
             if (ComponentUtility.HasComponent<AttributeManager>(go))
                 ComponentUtility.TryAddComponent<NetCodeAttributeMonitor>(go);
