@@ -24,12 +24,19 @@ namespace GreedyVox.NetCode.Editors
         EditorWindow.GetWindowWithRect<NetCodeItemPickupInspector>(
             new Rect(Screen.width - 400 / 2, Screen.height - 200 / 2, 400, 400), true, "Network Pickup Item");
         private Object[] m_NetworkItem; // Array to store multiple dragged GameObjects
-        private LayerMask m_LayerMask; // Layer mask for assigning layers to objects
+        private LayerMask m_LayerMask; // Default layer mask (will be set to VisualEffect in OnEnable)
         private Vector2 m_ScrollPosition; // Scroll position for the list of dropped items
         private const string IconErrorPath = "d_console.erroricon.sml"; // Path to error icon for notifications
         private const string IconIfoPath = "d_console.infoicon.sml"; // Path to info icon for notifications
         // Ensure m_NetworkItem is initialized as an empty array to avoid null reference issues
-        private void OnEnable() => m_NetworkItem ??= new Object[0];
+        private void OnEnable()
+        {
+            m_NetworkItem ??= new Object[0];
+            // Set default layer mask to "VisualEffect" if it exists
+            int visualEffectLayer = LayerMask.NameToLayer("VisualEffect");
+            if (visualEffectLayer != -1)
+                m_LayerMask = visualEffectLayer;
+        }
         private void OnGUI()
         {
             // Display a header box for the Pickup Item prefabs section

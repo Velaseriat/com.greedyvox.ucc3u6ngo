@@ -8,7 +8,6 @@ using UnityEngine;
 namespace GreedyVox.NetCode
 {
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(NetworkObject))]
     public class NetCodeInfo : NetworkBehaviour, INetworkInfo
     {
         /// <summary>
@@ -40,7 +39,7 @@ namespace GreedyVox.NetCode
         /// Does the network instance have authority?
         /// </summary>
         /// <returns>True if the instance has authority.</returns>
-        public new bool HasAuthority() => base.HasAuthority;
+        bool INetworkInfo.HasAuthority() => IsOwner;
         /// <summary>
         /// Is the player a spectator?
         /// </summary>
