@@ -30,18 +30,16 @@ namespace GreedyVox.NetCode
             else _Instance = this;
             m_PreloadedPrefabs ??= FindFirstObjectByType<ObjectPool>()?.PreloadedPrefabs;
         }
-        private void OnEnable()
+        public override void OnNetworkSpawn()
         {
-            if (NetworkManager.Singleton == null) return;
-            NetworkManager.Singleton.OnClientStarted += NetworkStarting;
-            NetworkManager.Singleton.OnServerStarted += NetworkStarting;
+            NetworkStarting();
+            base.OnNetworkSpawn();
         }
-        private void OnDisable()
+        public override void OnDestroy()
         {
-            if (NetworkManager.Singleton == null) return;
-            NetworkManager.Singleton.OnClientStarted -= NetworkStarting;
-            NetworkManager.Singleton.OnServerStarted -= NetworkStarting;
+            m_CustomMessagingManager?.UnregisterNamedMessageHandler(MsgServerNameSpawn);
             m_CustomMessagingManager?.UnregisterNamedMessageHandler(MsgServerNameDespawn);
+            base.OnDestroy();
         }
         private void NetworkStarting()
         {

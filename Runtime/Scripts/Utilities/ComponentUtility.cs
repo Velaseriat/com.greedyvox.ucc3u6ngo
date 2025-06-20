@@ -1,4 +1,8 @@
 using System;
+using System.Collections.Generic;
+using GreedyVox.NetCode.Traits;
+using Opsive.UltimateCharacterController.Traits;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace GreedyVox.NetCode.Utilities
@@ -197,6 +201,35 @@ namespace GreedyVox.NetCode.Utilities
                 return true;
             }
             return false;
+        }
+        public static bool TryGetSpawnedObjectsOnDeath(Health from, out List<GameObject> items)
+        {
+            var objs = from?.SpawnedObjectsOnDeath;
+            if (objs?.Length > 0)
+            {
+                items = new(objs);
+                return true;
+            }
+            items = default;
+            return false;
+        }
+        public static bool TryCopyNetworkedSpawnedObjects(Health from, NetCodeHealthMonitor to)
+        {
+            if (to != null && TryGetSpawnedObjectsOnDeath(from, out var items))
+            {
+                for (int i = items.Count - 1; i >= 0; i--)
+                {
+                    var item = items[i];
+                    if (HasComponent<NetworkObject>(item))
+                    {
+                        to.SpawnedObjectsOnDeath.Add(item);
+                        items.RemoveAt(i);
+                    }
+                }
+                from.SpawnedObjectsOnDeath = items.ToArray();
+                return true;
+            }
+            return false; ;
         }
     }
 }
